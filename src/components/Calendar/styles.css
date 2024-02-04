@@ -1,0 +1,59 @@
+/*$primary-color: #701198;
+$secondary-color: #3f3f3f;
+$tertiary-color: #a9a9a9;*/
+
+.container {
+  border: 0.15rem solid #701198;
+  border-radius: 1rem;
+  color: #3f3f3f;
+  width: 30vw;
+  padding: 0.5rem;
+}
+
+.day-block {
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.day-block-active {
+  margin: 1rem;
+  border-radius: 20%;
+  background-color: #701198;
+  color: white;
+}
+
+.container-calendar {
+  display: grid;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  grid-template-columns: repeat(7, 4vw);
+}
+
+.header-calendar {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 7vw);
+  padding: 0 2rem;
+}
+
+.button-calendar {
+  border: none;
+  background-color: white;
+  color: #701198;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.container-calendar {
+  display: grid;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  grid-template-columns: repeat(7, 4vw);
+}
+
+.header-week {
+  color: #a9a9a9;
+  padding: 1rem;
+}
