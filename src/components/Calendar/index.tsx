@@ -28,16 +28,16 @@ const months = {
   Dezembro: 31,
 };
 
-/*const customDates = [
+const customDates = [
   {
     type: "block",
-    date: "2024-02-05", // Pode ser do tipo Date também, se preferir
+    date: "2024-02-18", // Pode ser do tipo Date também, se preferir
   },
   {
     type: "booked",
-    date: "2024-05-25", // Pode ser do tipo Date também, se preferir
+    date: "2024-02-10", // Pode ser do tipo Date também, se preferir
   },
-];*/
+];
 
 const Calendar = () => {
   const [firstDay, setFirstDay] = useState(new Date().getDay());
@@ -82,42 +82,6 @@ const Calendar = () => {
     setSelectedYear(y);
   };
 
-  //array para dias do Custom Dates
-  /*const arrayCustomDay = () => {
-    let daysCustom = [];
-
-    for (let i = 0; i < customDates.length; i++) {
-      var valor1 = customDates[i].date.split("-");
-      daysCustom.push(parseInt(valor1[2]));
-    }
-
-    return daysCustom;
-  };
-  
-  //array para mês do Custom Dates
-  const arrayCustomMonth = () => {
-    let daysCustom = [];
-
-    for (let i = 0; i < customDates.length; i++) {
-      var valor1 = customDates[i].date.split("-");
-      daysCustom.push(parseInt(valor1[1]));
-    }
-
-    return daysCustom;
-  };
-
-  //array para anos do Custom Dates
-  const arrayCustomYear = () => {
-    let daysCustom = [];
-
-    for (let i = 0; i < customDates.length; i++) {
-      var valor1 = customDates[i].date.split("-");
-      daysCustom.push(parseInt(valor1[0]));
-    }
-
-    return daysCustom;
-  };*/
-
   //renderizar os dias do mês
   const getDaysBlocks = () => {
     let numDay = [];
@@ -128,25 +92,23 @@ const Calendar = () => {
     }
 
     for (let x = 1; x < Object.values(months)[selectedMonth] + 1; x++) {
-      /*if (arrayCustomDay().includes(x) === true) {
-        numDay.push(
-          <h1>
-            {x}
-          </h1>
+      var teste = customDates.filter(function (custom) {
+        return (
+          parseInt(custom.date.substring(8)) == x &&
+          parseInt(custom.date.substring(5, 8)) - 1 == selectedMonth &&
+          parseInt(custom.date.substring(0, 4)) == selectedYear
         );
+      });
+
+      if (teste.length > 0) {
+        numDay.push(<h1>{x}</h1>);
       } else {
         numDay.push(
           <div className={x === selectedDay ? "day-block-active" : "day-block"}>
             {x}
           </div>
         );
-      }*/
-
-      numDay.push(
-        <div className={x === selectedDay ? "day-block-active" : "day-block"}>
-          {x}
-        </div>
-      );
+      }
     }
 
     return numDay;
