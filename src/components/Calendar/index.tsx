@@ -37,7 +37,7 @@ const months = {
 
 const Calendar = ({ customDate }: ICalendarProps) => {
   const [firstDay, setFirstDay] = useState(new Date().getDay());
-  const [selectedDay, setSelectedDay] = useState(new Date().getDate());
+  const [selectedDay] = useState(new Date().getDate());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [nameMonth, setNameMonth] = useState(
@@ -81,11 +81,11 @@ const Calendar = ({ customDate }: ICalendarProps) => {
 
   //renderizar os dias do mês
   const getDaysBlocks = () => {
-    let numDay = [];
+    const numDay = [];
 
     //deixar vazio chegar no dia da semana que inicia o mês
     for (let i = 0; i < firstDay; i++) {
-      numDay.push(<div></div>);
+      numDay.push(<div key={numDay.length}></div>);
     }
 
     //renderizar os dias
@@ -100,14 +100,14 @@ const Calendar = ({ customDate }: ICalendarProps) => {
 
       if (renderCustomDate.length > 0) {
         numDay.push(
-          <div className="day-block-custom tooltip">
+          <div key={numDay.length} className="day-block-custom tooltip">
             {x}
             <span className="tooltip-date">{renderCustomDate[0].type}</span>
           </div>
         );
       } else {
         numDay.push(
-          <div className={x === selectedDay ? "day-block-active" : "day-block"}>
+          <div key={numDay.length} className={x === selectedDay && (selectedMonth == new Date().getMonth()) ? "day-block-active" : "day-block"}>
             {x}
           </div>
         );
