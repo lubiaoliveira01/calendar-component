@@ -22,3 +22,17 @@ yarn install
 ```js
 yarn dev
 ```
+
+O componente não possui estilização pré-definida, sendo assim ser possível estilizá-lo ao seu critério.
+Caso queria adicionar eventos ao seu calendário você poderá fornecer ao componente, através da propriedade "customDate", um JSON, no seguinte formato:
+```js
+{
+  "customDates": [
+    {
+      "type": "Nome do Evento",
+      "date": "AAAA-MM-DD"
+    },
+    ...
+  ]
+}
+```
