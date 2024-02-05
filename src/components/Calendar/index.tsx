@@ -107,7 +107,14 @@ const Calendar = ({ customDate }: ICalendarProps) => {
         );
       } else {
         numDay.push(
-          <div key={numDay.length} className={x === selectedDay && (selectedMonth == new Date().getMonth()) ? "day-block-active" : "day-block"}>
+          <div
+            key={numDay.length}
+            className={
+              x === selectedDay && selectedMonth == new Date().getMonth()
+                ? "day-block-active"
+                : "day-block"
+            }
+          >
             {x}
           </div>
         );
@@ -120,12 +127,12 @@ const Calendar = ({ customDate }: ICalendarProps) => {
   return (
     <div className="container">
       <div className="header-calendar">
-        <button className="button-calendar" onClick={beforeMonth}>
+        <button className="button-calendar" onClick={beforeMonth} data-qa="before-month-button">
           &lt;
         </button>
-        <p>{nameMonth}</p>
-        <p>{selectedYear}</p>
-        <button className="button-calendar" onClick={afterMonth}>
+        <p data-qa="label-month">{nameMonth}</p>
+        <p data-qa="label-year">{selectedYear}</p>
+        <button className="button-calendar" onClick={afterMonth} data-qa="after-month-button">
           &gt;
         </button>
       </div>
