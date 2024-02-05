@@ -1,0 +1,24 @@
+{
+  "customDates": [
+    {
+      "type": "Ano Novo",
+      "date": "2024-01-01"
+    },
+    {
+      "type": "Carnaval",
+      "date": "2024-02-12"
+    },
+    {
+      "type": "Carnaval",
+      "date": "2024-02-13"
+    },
+    {
+      "type": "Sexta-feira Santa",
+      "date": "2024-03-29"
+    },
+    {
+      "type": "Independência do Brasil",
+      "date": "2024-09-07"
+    }
+  ]
+}

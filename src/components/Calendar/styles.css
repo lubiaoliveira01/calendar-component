@@ -6,26 +6,6 @@
   padding: 0.5rem;
 }
 
-.day-block {
-  margin: 1rem;
-  cursor: pointer;
-}
-
-.day-block-active {
-  margin: 1rem;
-  border-radius: 20%;
-  background-color: #701198;
-  color: white;
-}
-
-.container-calendar {
-  display: grid;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-  grid-template-columns: repeat(7, 4vw);
-}
-
 .header-calendar {
   display: grid;
   justify-content: center;
@@ -41,7 +21,59 @@
   cursor: pointer;
 }
 
+.container-calendar {
+  display: grid;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  grid-template-columns: repeat(7, 4vw);
+}
+
 .header-week {
   color: #a9a9a9;
   padding: 1rem;
+}
+
+.day-block {
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.day-block-active {
+  margin: 1rem;
+  border-radius: 20%;
+  background-color: #701198;
+  color: white;
+}
+
+.day-block-custom {
+  margin: 1rem;
+  border-radius: 20%;
+  background-color: #a9a9a9;
+  color: white;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip-date {
+  visibility: hidden;
+  font-size: 15px;
+  width: 110px;
+  background-color: #701198;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 60%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltip-date {
+  visibility: visible;
 }

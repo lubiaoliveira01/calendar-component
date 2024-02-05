@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
 
-//const declarando os dias da semana
+interface ICustomDateProps {
+  type: string;
+  date: string;
+}
+
+interface ICalendarProps {
+  customDate: ICustomDateProps[];
+}
+
 const weekDays = [
   "DOMINGO",
   "SEGUNDA",
@@ -12,7 +20,6 @@ const weekDays = [
   "SÁBADO",
 ];
 
-//const declarando os meses e seus dias equivalentes
 const months = {
   Janeiro: 31,
   Fevereiro: 28,
@@ -28,18 +35,7 @@ const months = {
   Dezembro: 31,
 };
 
-const customDates = [
-  {
-    type: "block",
-    date: "2024-02-18", // Pode ser do tipo Date também, se preferir
-  },
-  {
-    type: "booked",
-    date: "2024-02-10", // Pode ser do tipo Date também, se preferir
-  },
-];
-
-const Calendar = () => {
+const Calendar = ({ customDate }: ICalendarProps) => {
   const [firstDay, setFirstDay] = useState(new Date().getDay());
   const [selectedDay, setSelectedDay] = useState(new Date().getDate());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
@@ -73,6 +69,7 @@ const Calendar = () => {
     setSelectedMonth(m);
     setSelectedYear(y);
   };
+
   //avançar mês
   const afterMonth = () => {
     let m = selectedMonth + 1 == 12 ? 0 : selectedMonth + 1;
@@ -86,13 +83,14 @@ const Calendar = () => {
   const getDaysBlocks = () => {
     let numDay = [];
 
-    //deixar vazio dias até chega no dia da semana que começa o mÊs
+    //deixar vazio chegar no dia da semana que inicia o mês
     for (let i = 0; i < firstDay; i++) {
       numDay.push(<div></div>);
     }
 
+    //renderizar os dias
     for (let x = 1; x < Object.values(months)[selectedMonth] + 1; x++) {
-      var teste = customDates.filter(function (custom) {
+      var renderCustomDate = customDate.filter(function (custom) {
         return (
           parseInt(custom.date.substring(8)) == x &&
           parseInt(custom.date.substring(5, 8)) - 1 == selectedMonth &&
@@ -100,8 +98,13 @@ const Calendar = () => {
         );
       });
 
-      if (teste.length > 0) {
-        numDay.push(<h1>{x}</h1>);
+      if (renderCustomDate.length > 0) {
+        numDay.push(
+          <div className="day-block-custom tooltip">
+            {x}
+            <span className="tooltip-date">{renderCustomDate[0].type}</span>
+          </div>
+        );
       } else {
         numDay.push(
           <div className={x === selectedDay ? "day-block-active" : "day-block"}>
@@ -127,8 +130,6 @@ const Calendar = () => {
         </button>
       </div>
       <div className="container-calendar">
-        {/*map na const weekDays para criarmos a primeira linha do calendário
-        referente aos dias da semana*/}
         {weekDays.map((day) => (
           <div key={day} className="header-week">
             {day.substring(0, 3)}
